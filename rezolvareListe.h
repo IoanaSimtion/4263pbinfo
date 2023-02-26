@@ -106,13 +106,13 @@ int nrMinModificari(char* text, char cuv[100][100], int d){
 
         if(strcmp(cuv[i],"if")==0){
 
-            l.add(1);
+            //l.add(1);
 
         }
 
         if(strcmp(cuv[i],"else")==0){
 
-            l.add(0);
+            //l.add(0);
 
         }
 

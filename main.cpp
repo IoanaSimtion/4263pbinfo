@@ -10,9 +10,9 @@ using namespace std;
 int main()
 {
 
-    sol6();
+    //sol6();
 
-    //solLista();
+    solLista();
 
     return 0;
 }
