@@ -1,6 +1,7 @@
-#ifndef REZOLVARE_H_INCLUDED
-#define REZOLVARE_H_INCLUDED
+#ifndef rezolvareListe.h
+#define rezolvareListe.h
 
+#include "lista.h";
 #include "stiva.h";
 #include <string.h>
 
@@ -86,10 +87,12 @@ bool scriereCorecta(char* text, char cuv[100][100], int& d, int j) {
 
 
 
+///todo functie ce returneaza nr de modificari
 
-///todo functie ce returneaza nr minim de moficari
 
-int nrMinModificari(char* text, char cuv[100][100], int d, int i){
+int nrMinModificari(char* text, char cuv[100][100], int d){
+
+    Lista<int> l;
 
     int ct=0;
 
@@ -99,70 +102,31 @@ int nrMinModificari(char* text, char cuv[100][100], int d, int i){
 
     }
 
-    Stiva<int> s;
-
     for(int i=0;i<d;i++){
-
-        //cout<<cuv[i]<<endl;
 
         if(strcmp(cuv[i],"if")==0){
 
-            s.push(1);
+            l.add(1);
 
         }
 
         if(strcmp(cuv[i],"else")==0){
 
-            if(s.isEmpty()){
-
-                s.push(1);
-
-                ct++;
-
-            }
-            else{
-
-                if(strcmp(cuv[i-1],"if")==0){
-
-                    s.pop();
-
-                }
-
-            }
+            l.add(0);
 
         }
 
     }
 
-    /*if(ct==1){
-
-        return 1;
-
-    }*/
-
-    if(!s.isEmpty()){
-
-        //cout<<"aici"<<endl;
-
-        while(!s.isEmpty()){
-
-            s.pop();
-
-            ct++;
-        }
-
-    }
-
-    return ct/2;
+    return ct;
 
 }
 
 
 
+void solLista(){
 
-void sol6() {
-
-	int dim;
+    int dim;
 
 	char cuv[100][100], cuv2[100][100], n[100];
 
@@ -187,7 +151,7 @@ void sol6() {
 		}
 		else{
 
-            cout<<"Numarul minim de modificari este "<<nrMinModificari(cuv[i],cuv2,dim,i)<<endl;
+            cout<<"Numarul minim de modificari este "<<nrMinModificari(cuv[i],cuv2,dim)<<endl;
 		}
 
 	}
@@ -218,23 +182,4 @@ void sol6() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#endif // REZOLVARE_H_INCLUDED
+#endif // rezolvareListe.h
